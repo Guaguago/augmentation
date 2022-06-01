@@ -7,6 +7,7 @@ import random
 import time
 import numpy as np
 import torch
+torch.backends.cudnn.enabled = False
 from torch.autograd import Variable
 from torch import nn
 from torch import cuda
