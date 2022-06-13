@@ -1,0 +1,8 @@
+--gpuid 0
+--dir /apdcephfs/private_chencxu/taiji_inputs/augmentation/data/snli_1.0/
+--train_res train.content_word.json,train.all_rel.json
+--val_res dev.content_word.json,dev.all_rel.json
+--within_constr n2 --rho_w 2 --cross_constr n3 --rho_c 1 --constr_on 1,2,3
+--encoder rnn --rnn_type lstm --dropout 0.2 --epochs 100 --learning_rate 0.0001 --clip 5
+--percent 1 --seed 1
+--save_file /apdcephfs/private_chencxu/taiji_outputs/augmentation/models/n2_rho2_n3_rho1_bilstm_lr00001_perc100_seed1
