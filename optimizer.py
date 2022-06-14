@@ -114,6 +114,9 @@ class Optimizer:
 		# if need to average gradient over batch
 		if batch_size != 1:
 			for n, p in m.named_parameters():
+				if n == 'attention.w.weight':
+					p.grad -= m.delta_w.sum(0)
+
 				if p.requires_grad:
 					if p.grad is None:
 						if not self.__FLAG:

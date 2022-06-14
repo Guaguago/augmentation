@@ -99,7 +99,15 @@ class WithinLayer(torch.nn.Module):
 		rho_w = self.rho_w
 
 		constrained_score1 = score1 + rho_w * datt1
-		constrained_score2 = score2 + rho_w * datt2
+		# score1.register_hook(lambda grad: print(grad))
+		score1.register_hook(lambda grad: grad + rho_w * datt1)
+		# score1.register_hook(lambda grad: print(grad))
+
+		constrained_score2 = score2 + 0.1 * rho_w * datt2
+		# score1.register_hook(lambda grad: print(grad))
+		score2.register_hook(lambda grad: grad + 0.1 * rho_w * datt2)
+		# score1.register_hook(lambda grad: print(grad))
+
 
 		# stats
 		self.shared.rho_w = rho_w
